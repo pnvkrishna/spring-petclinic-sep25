@@ -53,6 +53,11 @@ jobs:
             with:
               name: spring-petclinic-${{ matrix.java }}.jar
               path: '**/target/*.jar'
+          - name: Maven Build and Deploy to Artifactory
+            run: |
+             jf mvn-config --repo-deploy-releases=learning-libs-release --repo-deploy-snapshots=learning-libs-snapshot
+             jf mvn deploy
+             jf rt bp # Optional: Deploy build info
           
           
             
