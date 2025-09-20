@@ -28,6 +28,13 @@ jobs:
                 distribution: 'temurin'
                 java-version: ${{ matrix.java }}
                 cache: maven
+          - uses: jfrog/setup-jfrog-cli@v4
+            env:
+              JF_URL: ${{ vars.JF_URL }}
+              JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}                       
+          - run: |
+              jf --version
+              jf rt ping
           - name: Initialize CodeQL
             uses: github/codeql-action/init@v3
             with:
