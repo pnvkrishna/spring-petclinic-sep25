@@ -33,7 +33,7 @@ jobs:
             with:
               languages: java
           - name: build package
-            run: mvn ${{ vars.GOAL  }}
+            run: mvn package
           - name: Perform CodeQL Analysis
             uses: github/codeql-action/analyze@v3
           - name: publish test results
